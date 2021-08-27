@@ -1,25 +1,62 @@
-import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View, Text, KeyboardAvoidingView, TouchableOpacity } from 'react-native';
 
 import InputText from '../../components/forms/InputText';
 import Button from '../../components/forms/button';
+import api from '../../services/api';
 
 const Register: React.FC<any> = ({ navigation }) => {
+  const [name, setName] = useState('');
+  const [lastname, setLastname] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = async () => {
+    await api.post('/user', {
+      email,
+      password,
+      name,
+      lastname
+    });
+
+    navigation.navigate('Login');
+  }
+
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView style={styles.container} behavior="position">
       <View style={styles.photoContainer}>
         <Text style={styles.question}>?</Text>
       </View>
       <View style={styles.inputsContainer}>
-        <InputText placeholder="Nome" autoCorrect={false} />
-        <InputText placeholder="Sobrenome" autoCorrect={false} />
-        <InputText icon="envelope" placeholder="E-mail" autoCorrect={false} />
-        <InputText icon="lock" placeholder="Senha" autoCorrect={false} />
+        <InputText placeholder="Nome"
+          autoCorrect={false}
+          value={name}
+          onChangeText={setName} />
+        <InputText
+          placeholder="Sobrenome"
+          autoCorrect={false}
+          value={lastname}
+          onChangeText={setLastname}
+        />
+        <InputText
+          icon="envelope"
+          placeholder="E-mail"
+          keyboardType="email-address"
+          autoCapitalize="none"
+          autoCorrect={false}
+          value={email}
+          onChangeText={setEmail} />
+        <InputText
+          icon="lock"
+          placeholder="Senha"
+          autoCorrect={false}
+          value={password}
+          onChangeText={setPassword} />
       </View>
       <View style={styles.buttonConteiner}>
-        <Button title="Cadastrar-se" />
+        <Button onPress={handleSubmit} title="Cadastrar-se" />
       </View>
-    </View>
+    </KeyboardAvoidingView >
   );
 }
 
