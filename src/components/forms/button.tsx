@@ -6,10 +6,10 @@ interface ButtonProps extends TouchableOpacityProps {
 }
 
 const Button: React.FC<ButtonProps> = ({ title, ...rest }) => {
-  return(
+  return (
     <>
       <View style={styles.inputContainer}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} {...rest}>
           <Text style={styles.textButton}>{title}</Text>
         </TouchableOpacity>
       </View>

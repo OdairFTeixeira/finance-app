@@ -7,18 +7,18 @@ import Button from '../../components/forms/button';
 const Register: React.FC<any> = ({ navigation }) => {
   return (
     <View style={styles.container}>
-        <View style={styles.photoContainer}>
-          <Text style={styles.question}>?</Text>
-        </View>
-        <View style={styles.inputsContainer}>
-          <InputText placeholder="Nome" autoCorrect={false} />
-          <InputText placeholder="Sobrenome" autoCorrect={false} />
-          <InputText icon="envelope" placeholder="E-mail" autoCorrect={false} />
-          <InputText icon="lock" placeholder="Senha" autoCorrect={false} />
-        </View>
-        <View style={styles.buttonConteiner}>
-          <Button title="Cadastrar-se" />
-        </View>
+      <View style={styles.photoContainer}>
+        <Text style={styles.question}>?</Text>
+      </View>
+      <View style={styles.inputsContainer}>
+        <InputText placeholder="Nome" autoCorrect={false} />
+        <InputText placeholder="Sobrenome" autoCorrect={false} />
+        <InputText icon="envelope" placeholder="E-mail" autoCorrect={false} />
+        <InputText icon="lock" placeholder="Senha" autoCorrect={false} />
+      </View>
+      <View style={styles.buttonConteiner}>
+        <Button title="Cadastrar-se" />
+      </View>
     </View>
   );
 }
